@@ -16,7 +16,7 @@ type Name struct {
 }
 
 var element = []string{"terre", "feu", "eau", "air", "foudre", "magie"}
-var race = []string{"dragon", "gobelin", "mort-vivant", "bête", "démons", "humanoïde"}
+var race = []string{"démons", "bête", "mort-vivant", "humanoïde", "Dragon", "Géant"}
 
 func main() {
 	data := []Name{}
@@ -24,7 +24,7 @@ func main() {
 		strenght := rand.Intn(20) + 1
 		elementMonster := element[rand.Intn(len(element))]
 		raceMonster := race[rand.Intn(len(race))]
-		armor := rand.Intn(10) + 1
+		armor := rand.Intn(30) + 1
 		name := nameGenerator(strenght, elementMonster, raceMonster, armor)
 		data = append(data, Name{name, raceMonster, strenght, armor, elementMonster})
 	}
@@ -40,9 +40,9 @@ func setElement(element string) string {
 	fire := []string{"brûlant", "ardent", "enflammé", "incandescent", "brûlé", "rougeoyant", "fumant", "torride"}
 	water := []string{"mouillé", "glacial", "gelé", "humide", "ruisselant", "détrempé", "inondé", "débordant"}
 	earth := []string{"sauvage", "féroce", "sanglant", "affamé"}
-	air := []string{"aérien", "léger", "volant", "aérien", "céleste", "nuageux", "venteux", "tempétueux"}
+	air := []string{"aérien", "léger", "aérien", "céleste", "nuageux", "venteux", "tempétueux"}
 	thunder := []string{"tonnant", "électrique", "foudroyant", "éclatant", "détonnant", "fulgurant", "électrisant"}
-	magic := []string{"magique", "ensorcelé", "mystique", "surnaturel", "mystérieux", "enchanteur", "divin", "sacré"}
+	magic := []string{"magique", "ensorcelé", "mystique", "surnaturel", "mystérieux", "enchanté", "sacré"}
 
 	switch element {
 	case "terre":
@@ -62,11 +62,11 @@ func setElement(element string) string {
 	return adj
 }
 
-func setRace(race string, name string) string {
-	raceSet := name + " (" + race +")"
+func setRace(race string, name string, force int) string {
+	raceSet := name
 
 	animals := []string{"loup", "ours", "chien", "serpent"}
-	undead := []string{"zombie", "squelette", "mort-vivant", "fantôme"}
+	undead := []string{"zombie", "squelette", "fantôme", "momie", "vampire", "loup-garou"}
 
 	switch race {
 	case "bête":
@@ -74,18 +74,27 @@ func setRace(race string, name string) string {
 	case "mort-vivant":
 		raceSet = undead[rand.Intn(len(undead))]
 	}
-	return raceSet
+	return "(" + race + " " + setForce(force) +") " + raceSet 
 }
 
 func setForce(force int) string {
 	power := ""
 
-	if force <= 10 {
+	if force <= 5 {
 		power = "faible"
-	} else {
+	} else if force <= 10 {
+		power = "normal"
+	} else if force <= 15 {
 		power = "puissant"
+	} else if force <= 20 {
+		power = "surpuissant"
+	} else if force <= 25 {
+		power = "légendaire"
+	} else if force <= 29{
+		power = "mythique"
+	} else if force >= 30{
+		power = "divin"
 	}
-
 	return power
 }
 
@@ -94,8 +103,12 @@ func setArmor(armor int) string {
 
 	if armor <= 5 {
 		protection = "sans défense"
-	} else {
+	} else if armor <= 10 {
+		protection = "protégé"
+	} else if armor <= 15 {
 		protection = "blindé"
+	} else if armor >= 20 {
+		protection = "impénétrable"
 	}
 
 	return protection
@@ -104,7 +117,10 @@ func setArmor(armor int) string {
 func nameGenerator(strenght int, element string, race string, armor int) string {
 	voyels := []string{"a", "e", "i", "o", "u", "y"}
 	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"}
-	randomNumber := rand.Intn(4) + 3
+	endWordDemon := []string{"og", "eth", "oth", "uk", "uur", "ach", "uz", "oz", "er", "org"}
+	min := 4
+	max := 8
+	randomNumber := rand.Intn(max - min) + min
 	name := ""
 	letter := ""
 
@@ -112,6 +128,11 @@ func nameGenerator(strenght int, element string, race string, armor int) string 
 		if i%2 == 0 {
 			letter = voyels[rand.Intn(len(voyels))]
 			name += letter
+			if letter == "o" || letter =="u" || letter == "a" {
+				if rand.Intn(4) == 0 {
+					name += letter
+				}
+			}
 		} else {
 			letter = consonants[rand.Intn(len(consonants))]
 			name += letter
@@ -119,13 +140,23 @@ func nameGenerator(strenght int, element string, race string, armor int) string 
 				letter = "u"
 				name += letter
 			} 
+			if letter == "m" || letter == "n" || letter == "r" || letter == "l" {
+				if rand.Intn(4) == 0 {
+					name += letter
+				}
+			}
 		}
 	}
 
-	if string(name[len(name)-1]) == "u" && string(name[len(name)-2]) == "q" {
-		letter = "e"
-		name += letter
+	if race == "démons" {
+		if len(name)%2 == 0 {
+			name = name + endWordDemon[rand.Intn(len(endWordDemon))]
+		} else {
+			name = name + endWordDemon[rand.Intn(len(endWordDemon)-1)]
+		}
 	}
-	fmt.Println(setForce(strenght) + " " + setRace(race, name) + " " + setElement(element) + " " + setArmor(armor))
-	return setForce(strenght) + " " + setRace(race, name) + " " + setElement(element) + " " + setArmor(armor)
+
+	fmt.Println(setRace(race, name, strenght) + " " + setElement(element) + " et " + setArmor(armor))
+	return setRace(race, name, strenght) + " " + setElement(element) + " et " + setArmor(armor)
 }
+
