@@ -19,16 +19,9 @@ type monster struct {
 	DD					int
 	Speed				map[string]int
 	SaveRoll			map[string]int
-	
 	StateImmunity		[]string
-	
 	Sense				[]string
 	Languages			[]string
-
-	Attaques			[]string
-	SpecialDeals		[]string
-	Action				[]string
-	Reaction			[]string
 }
 
 type groupMonstre struct {
