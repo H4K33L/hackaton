@@ -190,28 +190,29 @@ func AC( carcats map[string]int) string {
 }
 
 func LP(ID int, size string, carcats map[string]int) string {
-	if ID == 0 {
-		ID = 1
+	nb := rand.Intn(40)
+	if nb == 0 {
+		nb = 1
 	}
 	switch size {
 	case "Très Petite" :
-		LP := int(float64(ID) * 2.5 + float64(carcats["Con"]*ID))
-		return strconv.Itoa(LP)+" "+strconv.Itoa(ID)+"d4+"+strconv.Itoa(ID*carcats["Con"])
+		LP := int(float64(nb) * 2.5 + float64(carcats["Con"]*nb))
+		return strconv.Itoa(LP)+" "+strconv.Itoa(nb)+"d4+"+strconv.Itoa(nb*carcats["Con"])
 	case "Petite" :
-		LP := int(float64(ID) * 3.5 + float64(carcats["Con"]*ID))
-		return strconv.Itoa(LP)+" "+strconv.Itoa(ID)+"d6+"+strconv.Itoa(ID*carcats["Con"])
+		LP := int(float64(nb) * 3.5 + float64(carcats["Con"]*nb))
+		return strconv.Itoa(LP)+" "+strconv.Itoa(nb)+"d6+"+strconv.Itoa(nb*carcats["Con"])
 	case "Moyenne" :
-		LP := int(float64(ID) * 4.5 + float64(carcats["Con"]*ID))
-		return strconv.Itoa(LP)+" "+strconv.Itoa(ID)+"d8+"+strconv.Itoa(ID*carcats["Con"])
+		LP := int(float64(nb) * 4.5 + float64(carcats["Con"]*nb))
+		return strconv.Itoa(LP)+" "+strconv.Itoa(nb)+"d8+"+strconv.Itoa(nb*carcats["Con"])
 	case "Grande" :
-		LP := int(float64(ID) * 5.5 + float64(carcats["Con"]*ID))
-		return strconv.Itoa(LP)+" "+strconv.Itoa(ID)+"d10+"+strconv.Itoa(ID*carcats["Con"])
+		LP := int(float64(nb) * 5.5 + float64(carcats["Con"]*nb))
+		return strconv.Itoa(LP)+" "+strconv.Itoa(nb)+"d10+"+strconv.Itoa(nb*carcats["Con"])
 	case "Très Grande" :
-		LP := int(float64(ID) * 6.5 + float64(carcats["Con"]*ID))
-		return strconv.Itoa(LP)+" "+strconv.Itoa(ID)+"d12+"+strconv.Itoa(ID*carcats["Con"])
+		LP := int(float64(nb) * 6.5 + float64(carcats["Con"]*nb))
+		return strconv.Itoa(LP)+" "+strconv.Itoa(nb)+"d12+"+strconv.Itoa(nb*carcats["Con"])
 	case "Gigantesque" :
-		LP := int(float64(ID) * 10.5 + float64(carcats["Con"]*ID))
-		return strconv.Itoa(LP)+" "+strconv.Itoa(ID)+"d20+"+strconv.Itoa(ID*carcats["Con"])
+		LP := int(float64(nb) * 10.5 + float64(carcats["Con"]*nb))
+		return strconv.Itoa(LP)+" "+strconv.Itoa(nb)+"d20+"+strconv.Itoa(nb*carcats["Con"])
 	}
 	return ""
 }
