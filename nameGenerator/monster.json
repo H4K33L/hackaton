@@ -1,0 +1,29 @@
+[
+ {
+  "name": "(humanoïde basique moyen) osogoor indomptable et protégé",
+  "key": 0,
+  "id": 0,
+  "monsterType": "",
+  "size": "",
+  "alignment": "",
+  "caract": null,
+  "caractMod": null,
+  "mastery": 0,
+  "ac": "",
+  "lp": "",
+  "resistance": null,
+  "vulnerability": null,
+  "immunity": null,
+  "attacBonnus": 0,
+  "dd": 0,
+  "speed": null,
+  "saveRoll": null,
+  "stateImmunity": null,
+  "sense": null,
+  "languages": null,
+  "attaques": null,
+  "specialDeals": null,
+  "action": null,
+  "reaction": null
+ }
+]
