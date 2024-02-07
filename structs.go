@@ -2,7 +2,6 @@ package Monster
 
 type monster struct {
 	Name				string
-	KEY					int
 	ID					int
 	MonsterType			string
 	Size				string
