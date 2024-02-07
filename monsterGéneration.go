@@ -16,9 +16,7 @@ func MonsterGenartae(monsterType string, ID int) monster {
 	output.Mastery = Mastery(output.ID)
 	output.AC = AC(output.CaractMod)
 	output.LP = LP(output.ID, output.Size, output.CaractMod)
-	output.Resistance = ResiVulImun()
-	output.Vulnerability = ResiVulImun()
-	output.Immunity = ResiVulImun()
+	output = ResiVulImun(output)
 	output.AttacBonnus = AttacBonnus(output.Mastery, output.CaractMod)
 	output.DD = DD(output.Mastery, output.CaractMod)
 	output.Speed = Speed()
@@ -37,9 +35,7 @@ func MonsterGenartae(monsterType string, ID int) monster {
 		output.Mastery = Mastery(output.ID)
 		output.AC = AC(output.CaractMod)
 		output.LP = LP(output.ID, output.Size, output.CaractMod)
-		output.Resistance = ResiVulImun()
-		output.Vulnerability = ResiVulImun()
-		output.Immunity = ResiVulImun()
+		output = ResiVulImun(output)
 		output.AttacBonnus = AttacBonnus(output.Mastery, output.CaractMod)
 		output.DD = DD(output.Mastery, output.CaractMod)
 		output.Speed = Speed()
@@ -217,22 +213,41 @@ func LP(ID int, size string, carcats map[string]int) string {
 	return ""
 }
 
-func ResiVulImun() []string {
+func ResiVulImun(creature monster) monster {
 	degats := []string{"acide","contondants","froid","feu","force","foudre","nécrotiques","perforants","poison","psychiques","radiants","tranchants","tonnerre"}
+	creature.Resistance, degats = Dispatch(degats)
+	creature.Vulnerability, degats = Dispatch(degats)
+	creature.Immunity, _ = Dispatch(degats)
+	return creature
+}
+
+func Dispatch(degats []string) ([]string, []string) {
 	temp := rand.Intn(2)
 	if temp != 1 {
 		output := []string{}
-		nb := rand.Intn(7)
-		for i := 0; i <= nb ; i++ {
-			temp := rand.Intn(12)
-			if !IsIn(degats[temp], output) {
-				output = append(output, degats[temp])
-			}
+		if len(degats) == 0 {
+			return []string{}, []string{}
 		}
-		return output
+		nb := rand.Intn(len(degats))
+		for i := 0; i <= nb ; i++ {
+			temp := rand.Intn(len(degats))
+			output = append(output, degats[temp])
+			degats = Pop(degats, degats[temp])
+		}
+		return output, degats
 	} else {
-		return []string{}
+		return []string{}, degats
 	}
+}
+
+func Pop(degats []string, elem string) []string {
+	newDegats := []string{}
+			for i := range degats {
+				if degats[i] != elem {
+					newDegats = append(newDegats, degats[i])
+				}
+			}
+	return newDegats
 }
 
 func IsIn(elem string, list []string) bool {
