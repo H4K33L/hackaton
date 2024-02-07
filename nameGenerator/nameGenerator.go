@@ -88,56 +88,75 @@ func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
 }
 
 func generate(number int) {
-	var monsters []Monsters 
+	var monsters []Monsters
+
+	filepath := "monster.json"
+	content, err := ioutil.ReadFile(filepath)
+	if err != nil {
+		fmt.Println("Erreur lors de la lecture du fichier JSON:", err)
+		return
+	}
+
+	var existingData []Monsters
+	if len(content) > 0 {
+		err = json.Unmarshal(content, &existingData)
+		if err != nil {
+			fmt.Println("Erreur lors de l'analyse JSON du contenu existant:", err)
+			return
+		}
+	}
 
 	for i := 0; i < number; i++ {
 		strength := rand.Intn(30) + 1
 		raceMonster := race[rand.Intn(len(race))]
 		armor := rand.Intn(30) + 1
 		name := nameGenerator(strength, raceMonster, armor)
-		monster := Monster.MonsterGenartae(raceMonster, 3) 
+		monster := Monster.MonsterGenartae(raceMonster, 3)
 
 		monsterData := Monsters{
-			Name:         name,
-			KEY:          i + 1,
-			ID:           monster.ID,
-			MonsterType:  monster.MonsterType,
-			Size:         monster.Size,
-			Alignment:    monster.Alignment,
-			Caract:       monster.Caract,
-			CaractMod:    monster.CaractMod,
-			Mastery:      monster.Mastery,
-			AC:           monster.AC,
-			LP:           monster.LP,
-			Resistance:   monster.Resistance,
-			Vulnerability:monster.Vulnerability,
-			Immunity:     monster.Immunity,
-			AttacBonnus:  monster.AttacBonnus,
-			DD:           monster.DD,
-			Speed:        monster.Speed,
-			SaveRoll:     monster.SaveRoll,
-			StateImmunity:monster.StateImmunity,
-			Sense:        monster.Sense,
-			Languages:    monster.Languages,
+			Name:           name,
+			KEY:            len(existingData) + i,
+			ID:             monster.ID,
+			MonsterType:    monster.MonsterType,
+			Size:           monster.Size,
+			Alignment:      monster.Alignment,
+			Caract:         monster.Caract,
+			CaractMod:      monster.CaractMod,
+			Mastery:        monster.Mastery,
+			AC:             monster.AC,
+			LP:             monster.LP,
+			Resistance:     monster.Resistance,
+			Vulnerability:  monster.Vulnerability,
+			Immunity:       monster.Immunity,
+			AttacBonnus:    monster.AttacBonnus,
+			DD:             monster.DD,
+			Speed:          monster.Speed,
+			SaveRoll:       monster.SaveRoll,
+			StateImmunity:  monster.StateImmunity,
+			Sense:          monster.Sense,
+			Languages:      monster.Languages,
 		}
 
-		monsters = append(monsters, monsterData) 
+		monsters = append(monsters, monsterData)
 	}
 
-	file, err := json.MarshalIndent(monsters, "", " ")
+	existingData = append(existingData, monsters...)
+
+	newContent, err := json.Marshal(existingData)
 	if err != nil {
-		fmt.Println("Erreur lors de la création du fichier JSON :", err)
+		fmt.Println("Erreur lors de l'encodage JSON:", err)
 		return
 	}
 
-	err = ioutil.WriteFile("monster.json", file, 0644)
+	err = ioutil.WriteFile(filepath, newContent, 0644)
 	if err != nil {
-		fmt.Println("Erreur lors de l'écriture du fichier JSON :", err)
+		fmt.Println("Erreur lors de l'écriture du fichier JSON:", err)
 		return
 	}
 
-	fmt.Println("Fichier créé avec succès")
+	fmt.Println("Monstres ajoutés avec succès au fichier JSON.")
 }
+
 
 
 func setStrength(strength int) string {
