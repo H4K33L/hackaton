@@ -157,8 +157,6 @@ func generate(number int) {
 	fmt.Println("Monstres ajoutés avec succès au fichier JSON.")
 }
 
-
-
 func setStrength(strength int) string {
 	power := ""
 
