@@ -23,10 +23,10 @@ type monster struct {
 	Languages			[]string
 }
 
-type groupMonstre struct {
-
+type groupMonster struct {
+	Monsters	[]monster
 }
 
-type table_rencontre struct {
-
+type encounterTable struct {
+	Encounter	[]groupMonster
 }

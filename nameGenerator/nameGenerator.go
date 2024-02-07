@@ -12,27 +12,26 @@ import (
 )
 
 type Monsters struct {
-	Name				string
-	KEY					int
-	ID					int
-	MonsterType			string
-	Size				string
-	Alignment			string
-	Caract				map[string]int
-	CaractMod			map[string]int
-	Mastery				int
-	AC					string
-	LP					string
-	Resistance			[]string
-	Vulnerability		[]string
-	Immunity			[]string
-	AttacBonnus			int
-	DD					int
-	Speed				map[string]int
-	SaveRoll			map[string]int
-	StateImmunity		[]string
-	Sense				[]string
-	Languages			[]string
+	Name           string
+	ID             int
+	MonsterType    string
+	Size           string
+	Alignment      string
+	Caract         map[string]int
+	CaractMod      map[string]int
+	Mastery        int
+	AC             string
+	LP             string
+	Resistance     []string
+	Vulnerability  []string
+	Immunity       []string
+	AttacBonnus    int
+	DD             int
+	Speed          map[string]int
+	SaveRoll       map[string]int
+	StateImmunity  []string
+	Sense          []string
+	Languages      []string
 }
 
 var race = []string{"Aberration", "Bête", "Construction", "Dragon", "Céleste", "Élémentaire", "Fée", "Démon", "Géant", "Humanoïde", "Monstruosité", "Plante", "Mort-vivant"}
@@ -111,12 +110,11 @@ func generate(number int) {
 		raceMonster := race[rand.Intn(len(race))]
 		armor := rand.Intn(30) + 1
 		name := nameGenerator(strength, raceMonster, armor)
-		monster := Monster.MonsterGenartae(raceMonster, 3)
-
+		ID := 1
+		monster := Monster.GenerateMonster(raceMonster, ID)
 		monsterData := Monsters{
 			Name:           name,
-			KEY:            len(existingData) + i,
-			ID:             monster.ID,
+			ID:             ID,
 			MonsterType:    monster.MonsterType,
 			Size:           monster.Size,
 			Alignment:      monster.Alignment,
