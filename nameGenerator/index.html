@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>name generator</title>
+</head>
+<body>
+    <form action="/list" method="GET">
+        <input type="number" name="number" placeholder="enter the number of monster to generate" min="1" value="10">
+        <input type="submit" value="Generate Name">
+    </form>
+    {{range .}}
+        {{.Name}}
+        <br>
+    {{end}}
+</body>
+</html>
