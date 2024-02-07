@@ -1,272 +1,666 @@
 [
  {
-  "name": "(mort-vivant éthéré surpuissant) ygyjios aérien et sans-defense",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Géant légendaire) esakasmash protégé",
+  "KEY": 1,
+  "ID": 3,
+  "MonsterType": "Géant",
+  "Size": "Gigantesque",
+  "Alignment": "Loyal neutre",
+  "Caract": {
+   "Cha": 18,
+   "Con": 14,
+   "Dex": 13,
+   "For": 11,
+   "Int": 20,
+   "Sag": 16
+  },
+  "CaractMod": {
+   "Cha": 4,
+   "Con": 2,
+   "Dex": 1,
+   "For": 0,
+   "Int": 5,
+   "Sag": 3
+  },
+  "Mastery": 2,
+  "AC": "11",
+  "LP": "112 9d20+18",
+  "Resistance": [],
+  "Vulnerability": [
+   "acide"
+  ],
+  "Immunity": [],
+  "AttacBonnus": 3,
+  "DD": 12,
+  "Speed": {
+   "creusement": 1,
+   "escalade": 9,
+   "marche": 12,
+   "nage": 3,
+   "vol": 0
+  },
+  "SaveRoll": {
+   "Cha": 4,
+   "Con": 0,
+   "Dex": 1,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [],
+  "Sense": [
+   "vision dans le noir 28 m",
+   "vision véritable 22 m",
+   "  perception passive 13"
+  ],
+  "Languages": [
+   "Sylvestre",
+   "Infernal",
+   "Gobelin",
+   "Orc",
+   "Commun des profondeurs"
+  ]
  },
  {
-  "name": "(mort-vivant spectral surpuissant) ykoovus foudroyant et impenetrable",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Monstruosité mythique) ugidoith sans-defense",
+  "KEY": 2,
+  "ID": 3,
+  "MonsterType": "Monstruosité",
+  "Size": "Petite",
+  "Alignment": "Neutre bon",
+  "Caract": {
+   "Cha": 17,
+   "Con": 15,
+   "Dex": 17,
+   "For": 16,
+   "Int": 21,
+   "Sag": 22
+  },
+  "CaractMod": {
+   "Cha": 3,
+   "Con": 2,
+   "Dex": 3,
+   "For": 3,
+   "Int": 5,
+   "Sag": 6
+  },
+  "Mastery": 2,
+  "AC": "19 (armure naturelle), 13 si à terre",
+  "LP": "110 20d6+40",
+  "Resistance": [],
+  "Vulnerability": [],
+  "Immunity": [],
+  "AttacBonnus": 5,
+  "DD": 12,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 0,
+   "marche": 0,
+   "nage": 0,
+   "vol": 0
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [],
+  "Sense": [
+   "vision véritable 34 m",
+   "  perception passive 16"
+  ],
+  "Languages": [
+   "-"
+  ]
  },
  {
-  "name": "(Dragon interplanétaire faible) owepaonax rougeoyant et impenetrable",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Bête mythique) izotescale impenetrable",
+  "KEY": 3,
+  "ID": 3,
+  "MonsterType": "Bête",
+  "Size": "Gigantesque",
+  "Alignment": "Loyal mauvais",
+  "Caract": {
+   "Cha": 19,
+   "Con": 17,
+   "Dex": 16,
+   "For": 12,
+   "Int": 15,
+   "Sag": 20
+  },
+  "CaractMod": {
+   "Cha": 4,
+   "Con": 3,
+   "Dex": 3,
+   "For": 1,
+   "Int": 2,
+   "Sag": 5
+  },
+  "Mastery": 2,
+  "AC": "13",
+  "LP": "229 17d20+51",
+  "Resistance": [],
+  "Vulnerability": [
+   "poison",
+   "nécrotiques",
+   "radiants",
+   "acide"
+  ],
+  "Immunity": [],
+  "AttacBonnus": 5,
+  "DD": 13,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 0,
+   "marche": 0,
+   "nage": 0,
+   "vol": 0
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [
+   "Effrayé",
+   "Aveuglé",
+   "Charmé"
+  ],
+  "Sense": [
+   "vision dans le noir 25 m",
+   "  perception passive 15"
+  ],
+  "Languages": [
+   "Commun des profondeurs",
+   "Commun",
+   "Abyssal",
+   "Draconique",
+   "Nain",
+   "Primordial",
+   "Céleste",
+   "Gobelin"
+  ]
  },
  {
-  "name": "(Géant colossal puissant) yhyrigol gelé et blindé",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Construction faible) yhavstone très protégé",
+  "KEY": 4,
+  "ID": 3,
+  "MonsterType": "Construction",
+  "Size": "Moyenne",
+  "Alignment": "Neutre bon",
+  "Caract": {
+   "Cha": 24,
+   "Con": 16,
+   "Dex": 14,
+   "For": 21,
+   "Int": 13,
+   "Sag": 23
+  },
+  "CaractMod": {
+   "Cha": 7,
+   "Con": 3,
+   "Dex": 2,
+   "For": 5,
+   "Int": 1,
+   "Sag": 6
+  },
+  "Mastery": 2,
+  "AC": "12",
+  "LP": "217 29d8+87",
+  "Resistance": [],
+  "Vulnerability": [
+   "feu",
+   "perforants",
+   "nécrotiques",
+   "psychiques",
+   "foudre"
+  ],
+  "Immunity": [
+   "force",
+   "froid"
+  ],
+  "AttacBonnus": 7,
+  "DD": 13,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 0,
+   "marche": 0,
+   "nage": 0,
+   "vol": 0
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [
+   "Assourdi",
+   "Agrippé",
+   "À terre",
+   "Charmé",
+   "Aveuglé"
+  ],
+  "Sense": [
+   "vision aveugle 12 m",
+   "vision dans le noir 7 m",
+   "  perception passive 16"
+  ],
+  "Languages": [
+   "Géant",
+   "Gnome",
+   "Profond",
+   "Abyssal",
+   "Draconique",
+   "Infernal",
+   "Primordial",
+   "Sylvestre",
+   "Céleste",
+   "Nain"
+  ]
  },
  {
-  "name": "(Dragon sauvage moyen) ukemuyth nuageux et sans-defense",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Démon légendaire) ijedithor très protégé",
+  "KEY": 5,
+  "ID": 3,
+  "MonsterType": "Démon",
+  "Size": "Moyenne",
+  "Alignment": "Chaotique neutre",
+  "Caract": {
+   "Cha": 15,
+   "Con": 18,
+   "Dex": 15,
+   "For": 21,
+   "Int": 17,
+   "Sag": 24
+  },
+  "CaractMod": {
+   "Cha": 2,
+   "Con": 4,
+   "Dex": 2,
+   "For": 5,
+   "Int": 3,
+   "Sag": 7
+  },
+  "Mastery": 2,
+  "AC": "14 (armure naturelle), 12 si à terre",
+  "LP": "51 6d8+24",
+  "Resistance": [],
+  "Vulnerability": [
+   "acide",
+   "nécrotiques"
+  ],
+  "Immunity": [
+   "tranchants",
+   "poison",
+   "radiants",
+   "nécrotiques",
+   "contondants"
+  ],
+  "AttacBonnus": 7,
+  "DD": 14,
+  "Speed": {
+   "creusement": 4,
+   "escalade": 10,
+   "marche": 4,
+   "nage": 0,
+   "vol": 0
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [],
+  "Sense": [
+   "  perception passive 17"
+  ],
+  "Languages": [
+   "-"
+  ]
  },
  {
-  "name": "(Dragon embrasé divin) isevyth tonnant et peux protégé",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Mort-vivant faible) iteztre impenetrable",
+  "KEY": 6,
+  "ID": 3,
+  "MonsterType": "Mort-vivant",
+  "Size": "Très Petite",
+  "Alignment": "Chaotique neutre",
+  "Caract": {
+   "Cha": 17,
+   "Con": 15,
+   "Dex": 14,
+   "For": 17,
+   "Int": 20,
+   "Sag": 20
+  },
+  "CaractMod": {
+   "Cha": 3,
+   "Con": 2,
+   "Dex": 2,
+   "For": 3,
+   "Int": 5,
+   "Sag": 5
+  },
+  "Mastery": 2,
+  "AC": "12",
+  "LP": "108 24d4+48",
+  "Resistance": [
+   "poison",
+   "tranchants"
+  ],
+  "Vulnerability": [],
+  "Immunity": [],
+  "AttacBonnus": 5,
+  "DD": 12,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 1,
+   "marche": 3,
+   "nage": 0,
+   "vol": 7
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [
+   "Effrayé"
+  ],
+  "Sense": [
+   "vision dans le noir 30 m",
+   "vision véritable 19 m",
+   "  perception passive 15"
+  ],
+  "Languages": [
+   "Primordial",
+   "Gnome",
+   "Sylvestre",
+   "Profond",
+   "Commun des profondeurs",
+   "Infernal",
+   "Draconique",
+   "Nain",
+   "Géant",
+   "Elfique"
+  ]
  },
  {
-  "name": "(démons des abysses moyen) apyboz rougeoyant et peux protégé",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Plante puissant) ihidevine blindé",
+  "KEY": 7,
+  "ID": 3,
+  "MonsterType": "Plante",
+  "Size": "Très Petite",
+  "Alignment": "Chaotique neutre",
+  "Caract": {
+   "Cha": 15,
+   "Con": 15,
+   "Dex": 15,
+   "For": 10,
+   "Int": 23,
+   "Sag": 17
+  },
+  "CaractMod": {
+   "Cha": 2,
+   "Con": 2,
+   "Dex": 2,
+   "For": 0,
+   "Int": 6,
+   "Sag": 3
+  },
+  "Mastery": 2,
+  "AC": "14 (bouclier)",
+  "LP": "54 12d4+24",
+  "Resistance": [
+   "acide",
+   "perforants",
+   "foudre",
+   "force",
+   "feu"
+  ],
+  "Vulnerability": [],
+  "Immunity": [],
+  "AttacBonnus": 4,
+  "DD": 12,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 0,
+   "marche": 0,
+   "nage": 0,
+   "vol": 0
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 2,
+   "For": 0,
+   "Int": 6,
+   "Sag": 0
+  },
+  "StateImmunity": [],
+  "Sense": [
+   "vision dans le noir 0 m",
+   "vision véritable 30 m",
+   "  perception passive 13"
+  ],
+  "Languages": [
+   "Orc",
+   "Gobelin",
+   "Elfique",
+   "Infernal",
+   "Nain",
+   "Sylvestre",
+   "Commun des profondeurs",
+   "Draconique",
+   "Gnome",
+   "Commun",
+   "Halfelin"
+  ]
  },
  {
-  "name": "(Dragon embrasé mythique) elommorath mystérieux et sans-defense",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Aberration faible) ecyrgrix sans-defense",
+  "KEY": 8,
+  "ID": 3,
+  "MonsterType": "Aberration",
+  "Size": "Grande",
+  "Alignment": "Neutre neutre",
+  "Caract": {
+   "Cha": 13,
+   "Con": 21,
+   "Dex": 13,
+   "For": 19,
+   "Int": 22,
+   "Sag": 20
+  },
+  "CaractMod": {
+   "Cha": 1,
+   "Con": 5,
+   "Dex": 1,
+   "For": 4,
+   "Int": 6,
+   "Sag": 5
+  },
+  "Mastery": 2,
+  "AC": "19 (armure naturelle, bouclier)",
+  "LP": "105 10d10+50",
+  "Resistance": [],
+  "Vulnerability": [
+   "feu"
+  ],
+  "Immunity": [],
+  "AttacBonnus": 6,
+  "DD": 15,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 12,
+   "marche": 0,
+   "nage": 6,
+   "vol": 16
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [
+   "Effrayé"
+  ],
+  "Sense": [
+   "  perception passive 15"
+  ],
+  "Languages": [
+   "Géant",
+   "Draconique"
+  ]
  },
  {
-  "name": "(bête de l'au-delà puissant) ikuvy rougeoyant et sans-defense",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Dragon puissant) ifivyshyx blindé",
+  "KEY": 9,
+  "ID": 3,
+  "MonsterType": "Dragon",
+  "Size": "Très Petite",
+  "Alignment": "Chaotique neutre",
+  "Caract": {
+   "Cha": 17,
+   "Con": 20,
+   "Dex": 22,
+   "For": 20,
+   "Int": 16,
+   "Sag": 21
+  },
+  "CaractMod": {
+   "Cha": 3,
+   "Con": 5,
+   "Dex": 6,
+   "For": 5,
+   "Int": 3,
+   "Sag": 5
+  },
+  "Mastery": 2,
+  "AC": "16",
+  "LP": "202 27d4+135",
+  "Resistance": [],
+  "Vulnerability": [
+   "contondants",
+   "radiants",
+   "poison",
+   "tranchants",
+   "perforants"
+  ],
+  "Immunity": [],
+  "AttacBonnus": 8,
+  "DD": 15,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 4,
+   "marche": 0,
+   "nage": 0,
+   "vol": 18
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 5,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [],
+  "Sense": [
+   "  perception passive 15"
+  ],
+  "Languages": [
+   "Céleste",
+   "Géant",
+   "Infernal",
+   "Elfique",
+   "Primordial",
+   "Nain",
+   "Orc"
+  ]
  },
  {
-  "name": "(Dragon embrasé moyen) ulyhyyth électrique et peux protégé",
-  "key": 0,
-  "id": 0,
-  "monsterType": "",
-  "size": "",
-  "alignment": "",
-  "caract": null,
-  "caractMod": null,
-  "mastery": 0,
-  "ac": "",
-  "lp": "",
-  "resistance": null,
-  "vulnerability": null,
-  "immunity": null,
-  "attacBonnus": 0,
-  "dd": 0,
-  "speed": null,
-  "saveRoll": null,
-  "stateImmunity": null,
-  "sense": null,
-  "languages": null,
-  "attaques": null,
-  "specialDeals": null,
-  "action": null,
-  "reaction": null
+  "Name": "(Géant divin) otyrycrush blindé",
+  "KEY": 10,
+  "ID": 3,
+  "MonsterType": "Géant",
+  "Size": "Très Grande",
+  "Alignment": "Loyal neutre",
+  "Caract": {
+   "Cha": 19,
+   "Con": 22,
+   "Dex": 21,
+   "For": 16,
+   "Int": 18,
+   "Sag": 20
+  },
+  "CaractMod": {
+   "Cha": 4,
+   "Con": 6,
+   "Dex": 5,
+   "For": 3,
+   "Int": 4,
+   "Sag": 5
+  },
+  "Mastery": 2,
+  "AC": "15",
+  "LP": "112 9d12+54",
+  "Resistance": [
+   "poison"
+  ],
+  "Vulnerability": [],
+  "Immunity": [],
+  "AttacBonnus": 7,
+  "DD": 16,
+  "Speed": {
+   "creusement": 0,
+   "escalade": 0,
+   "marche": 0,
+   "nage": 0,
+   "vol": 0
+  },
+  "SaveRoll": {
+   "Cha": 0,
+   "Con": 0,
+   "Dex": 0,
+   "For": 0,
+   "Int": 0,
+   "Sag": 0
+  },
+  "StateImmunity": [],
+  "Sense": [
+   "  perception passive 15"
+  ],
+  "Languages": [
+   "Commun",
+   "Géant",
+   "Gnome",
+   "Orc",
+   "Abyssal",
+   "Nain",
+   "Céleste",
+   "Profond",
+   "Halfelin",
+   "Elfique",
+   "Sylvestre"
+  ]
  }
 ]
