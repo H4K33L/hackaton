@@ -250,3 +250,39 @@ func GetLP(info string) int {
 	}
 	return LP
 }
+
+func GoodListID(list []int, ID int) bool {
+	if len(list) == 1 {
+		return list[0] == ID
+	} else if len(list) == 2 {
+		temp := 0
+		for i := range list {
+			temp += list[i]
+		}
+		return int(float64(temp)*1.5) == ID
+	} else if len(list) >= 3 && len(list) <= 6 {
+		temp := 0
+		for i := range list {
+			temp += list[i]
+		}
+		return temp*2 == ID
+	} else if len(list) >= 7 && len(list) <= 10 {
+		temp := 0
+		for i := range list {
+			temp += list[i]
+		}
+		return int(float64(temp)*2.5) == ID
+	} else if len(list) >= 11 && len(list) <= 14 {
+		temp := 0
+		for i := range list {
+			temp += list[i]
+		}
+		return temp*3 == ID
+	}  else {
+		temp := 0
+		for i := range list {
+			temp += list[i]
+		}
+		return temp*4 == ID
+	}
+}

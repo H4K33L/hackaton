@@ -365,3 +365,14 @@ func Languages(creature monster) monster {
 	creature.Languages = output
 	return creature
 }
+
+/*-------------------------------------------*/
+
+func ListID(ID int) []int {
+	list := []int{}
+	temp := rand.Intn(40)
+	for i := 0 ; i <= temp ; i++ {
+		list = append(list,rand.Intn(31))
+	}
+	return list
+}
