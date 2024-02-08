@@ -1,14 +1,14 @@
 package main
 
 import (
-	"Monster"
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"strconv"
+	"text/template"
+	"Monster"
 )
 
 type Monsters struct {
@@ -69,7 +69,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	renderHTML(w, names, "index.html")
+	renderHTML(w, names, "template/index.html")
 }
 
 func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
