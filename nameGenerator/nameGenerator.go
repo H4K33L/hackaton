@@ -233,8 +233,7 @@ func nameGenerator(strenght int, race string, armor int) string {
 		name = generateUndeadName()
 	}
 
-	fmt.Println("(" + race + " " + setStrength(strenght) + ") " + name + " " + setArmor(armor))
-	return "(" + race + " " + setStrength(strenght) +") " + name + " " + setArmor(armor)
+	return name + " " + setArmor(armor) + " et " + setStrength(strenght)
 }
 
 func generateAberrationName() string {

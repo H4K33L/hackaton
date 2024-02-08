@@ -30,9 +30,54 @@
         <input type="number" name="ID" placeholder="enter the ID of the monster" min="1" max="30" value="1">
         <input type="submit" value="Generate Name">
     </form>
-    {{range .}}
-        {{.Name}}
-        <br>
-    {{end}}
+    <br>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Monster Type</th>
+          <th>Size</th>
+          <th>Alignment</th>
+          <th>Caract</th>
+          <th>CaractMod</th>
+          <th>Mastery</th>
+          <th>AC</th>
+          <th>LP</th>
+          <th>Resistance</th>
+          <th>Vulnerability</th>
+          <th>Immunity</th>
+          <th>Attack Bonnus</th>
+          <th>DD</th>
+          <th>Speed</th>
+          <th>Save Roll</th>
+          <th>State Immunity</th>
+          <th>Sense</th>
+          <th>Languages</th>
+        </tr>
+        {{range .}}
+        <tr>
+            <td>{{.Name}}</td>
+            <td>{{.ID}}</td>
+            <td>{{.MonsterType}}</td>
+            <td>{{.Size}}</td>
+            <td>{{.Alignment}}</td>
+            <td>{{.Caract}}</td>
+            <td>{{.CaractMod}}</td>
+            <td>{{.Mastery}}</td>
+            <td>{{.AC}}</td>
+            <td>{{.LP}}</td>
+            <td>{{.Resistance}}</td>
+            <td>{{.Vulnerability}}</td>
+            <td>{{.Immunity}}</td>
+            <td>{{.AttacBonnus}}</td>
+            <td>{{.DD}}</td>
+            <td>{{.Speed}}</td>
+            <td>{{.SaveRoll}}</td>
+            <td>{{.StateImmunity}}</td>
+            <td>{{.Sense}}</td>
+            <td>{{.Languages}}</td>
+        </tr>
+        {{end}}
+    </table>
 </body>
 </html>
