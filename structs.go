@@ -1,32 +1,32 @@
 package Monster
 
 type monster struct {
-	Name				string
-	ID					int
-	MonsterType			string
-	Size				string
-	Alignment			string
-	Caract				map[string]int
-	CaractMod			map[string]int
-	Mastery				int
-	AC					string
-	LP					string
-	Resistance			[]string
-	Vulnerability		[]string
-	Immunity			[]string
-	AttacBonnus			int
-	DD					int
-	Speed				map[string]int
-	SaveRoll			map[string]int
-	StateImmunity		[]string
-	Sense				[]string
-	Languages			[]string
+	Name				string				`json:"Name"`
+	ID					int					`json:"ID"`
+	MonsterType			string				`json:"MonsterType"`
+	Size				string				`json:"Size"`
+	Alignment			string				`json:"Alignment"`
+	Caract				map[string]int		`json:"Caract"`
+	CaractMod			map[string]int		`json:"CaractMod"`
+	Mastery				int					`json:"Mastery"`
+	AC					string				`json:"AC"`
+	LP					string				`json:"LP"`
+	Resistance			[]string			`json:"Resistance"`
+	Vulnerability		[]string			`json:"Vulnerability"`
+	Immunity			[]string			`json:"Immunity"`
+	AttacBonnus			int					`json:"AttacBonnus"`
+	DD					int					`json:"DD"`
+	Speed				map[string]int		`json:"Speed"`
+	SaveRoll			map[string]int		`json:"SaveRoll"`
+	StateImmunity		[]string			`json:"StateImmunity"`
+	Sense				[]string			`json:"Sense"`
+	Languages			[]string			`json:"Languages"`
 }
 
 type groupMonster struct {
-	Monsters	[]monster
+	Monsters			[]monster			`json:"Monsters"`
 }
 
 type encounterTable struct {
-	Encounter	[]groupMonster
+	Encounter			[]groupMonster
 }
