@@ -7,7 +7,25 @@
 </head>
 <body>
     <form action="/list" method="GET">
+        <label for="number">Choose the number of Monster : </label>
         <input type="number" name="number" placeholder="enter the number of monster to generate" min="1" value="10">
+        <label for="monsterType">Choose your Monster Type : </label>
+        <input list="monsterType" name="type">
+        <datalist id="monsterType">
+            <option value="Aberration">
+            <option value="Bête">
+            <option value="Dragon">
+            <option value="Céleste">
+            <option value="Artéfact">
+            <option value="Élémentaire">
+            <option value="Fée">
+            <option value="Démon">
+            <option value="Géant">
+            <option value="Humanoïde">
+            <option value="Monstruosité">
+            <option value="Plante">
+            <option value="Mort-vivant">
+        </datalist>
         <input type="submit" value="Generate Name">
     </form>
     {{range .}}

@@ -34,7 +34,7 @@ type Monsters struct {
 	Languages      []string
 }
 
-var race = []string{"Aberration", "Bête", "Construction", "Dragon", "Céleste", "Élémentaire", "Fée", "Démon", "Géant", "Humanoïde", "Monstruosité", "Plante", "Mort-vivant"}
+var race = []string{"Aberration", "Bête", "Artéfact", "Dragon", "Céleste", "Élémentaire", "Fée", "Démon", "Géant", "Humanoïde", "Monstruosité", "Plante", "Mort-vivant"}
 
 func main() {
 	http.HandleFunc("/list", generateJSON)
@@ -44,11 +44,14 @@ func main() {
 
 func generateJSON(w http.ResponseWriter, r *http.Request) {
 	number, err := strconv.Atoi(r.URL.Query().Get("number"))
+	monsterType := r.URL.Query().Get("type")
+	fmt.Println("Nombre de monstres à générer:", number)
+	fmt.Println("Type de monstre à générer:", monsterType)
 	if err != nil {
 		http.Error(w, "Erreur lors de la lecture du nombre", http.StatusBadRequest)
 		return
 	}
-	generate(number)
+	generate(number, monsterType)
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 
 	handler(w, r)
@@ -86,7 +89,7 @@ func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
 	}
 }
 
-func generate(number int) {
+func generate(number int, monsterType string) {
 	var monsters []Monsters
 
 	filepath := "monster.json"
@@ -107,11 +110,10 @@ func generate(number int) {
 
 	for i := 0; i < number; i++ {
 		strength := rand.Intn(30) + 1
-		raceMonster := race[rand.Intn(len(race))]
 		armor := rand.Intn(30) + 1
-		name := nameGenerator(strength, raceMonster, armor)
+		name := nameGenerator(strength, monsterType, armor)
 		ID := 1
-		monster := Monster.GenerateMonster(raceMonster, ID)
+		monster := Monster.GenerateMonster(monsterType, ID)
 		monsterData := Monsters{
 			Name:           name,
 			ID:             ID,
