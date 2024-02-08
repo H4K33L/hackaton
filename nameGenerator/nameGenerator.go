@@ -1,14 +1,14 @@
 package main
 
 import (
+	"Monster"
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"strconv"
-	"text/template"
-	"Monster"
 )
 
 type Monsters struct {
@@ -44,14 +44,17 @@ func main() {
 
 func generateJSON(w http.ResponseWriter, r *http.Request) {
 	number, err := strconv.Atoi(r.URL.Query().Get("number"))
-	monsterType := r.URL.Query().Get("type")
-	fmt.Println("Nombre de monstres à générer:", number)
-	fmt.Println("Type de monstre à générer:", monsterType)
 	if err != nil {
 		http.Error(w, "Erreur lors de la lecture du nombre", http.StatusBadRequest)
 		return
 	}
-	generate(number, monsterType)
+	monsterType := r.URL.Query().Get("type")
+	ID, err := strconv.Atoi(r.URL.Query().Get("ID"))
+	if err != nil {
+		http.Error(w, "Erreur lors de la lecture de l'ID", http.StatusBadRequest)
+		return
+	}
+	generate(number, monsterType, ID)
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 
 	handler(w, r)
@@ -72,7 +75,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	renderHTML(w, names, "template/index.html")
+	renderHTML(w, names, "index.html")
 }
 
 func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
@@ -89,7 +92,7 @@ func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
 	}
 }
 
-func generate(number int, monsterType string) {
+func generate(number int, monsterType string, Id int) {
 	var monsters []Monsters
 
 	filepath := "monster.json"
@@ -112,11 +115,10 @@ func generate(number int, monsterType string) {
 		strength := rand.Intn(30) + 1
 		armor := rand.Intn(30) + 1
 		name := nameGenerator(strength, monsterType, armor)
-		ID := 1
-		monster := Monster.GenerateMonster(monsterType, ID)
+		monster := Monster.GenerateMonster(monsterType, Id)
 		monsterData := Monsters{
 			Name:           name,
-			ID:             ID,
+			ID:             Id,
 			MonsterType:    monster.MonsterType,
 			Size:           monster.Size,
 			Alignment:      monster.Alignment,
