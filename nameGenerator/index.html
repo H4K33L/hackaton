@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>name generator</title>
 </head>
 <body>
@@ -79,5 +80,40 @@
         </tr>
         {{end}}
     </table>
+
+    {{range .}}
+    <div class="popupMonster">
+        <div class="popup-content">
+            <a href="javascript:void(0)" onclick="toggleArtist('{{.Id}}')" class="popup-exit">
+                <i class="material-icons">
+                    close
+                </i>
+            </a>
+            <div class="info">
+                <h2>{{.Name}}</h2>
+                <p>{{.ID}}</p>
+                <p>{{.MonsterType}}</p>
+                <p>{{.Size}}</p>
+                <p>{{.Alignment}}</p>
+                <p>{{.Caract}}</p>
+                <p>{{.CaractMod}}</p>
+                <p>{{.Mastery}}</p>
+                <p>{{.AC}}</p>
+                <p>{{.LP}}</p>
+                <p>{{.Resistance}}</p>
+                <p>{{.Vulnerability}}</p>
+                <p>{{.Immunity}}</p>
+                <p>{{.AttacBonnus}}</p>
+                <p>{{.DD}}</p>
+                <p>{{.Speed}}</p>
+                <p>{{.SaveRoll}}</p>
+                <p>{{.StateImmunity}}</p>
+                <p>{{.Sense}}</p>
+                <p>{{.Languages}}</p>
+            </div>
+        </div>
+    </div>
+    {{end}}
+
 </body>
 </html>
