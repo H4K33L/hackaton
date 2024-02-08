@@ -116,9 +116,9 @@ func Generate(monsterType string, ID int) error {
 /*----------------------------- The folowing func still unused but can be add to a future update ------------------------------------*/
 
 func GenerateGroup(monsterType string, ID int) groupMonster {
-	list := ListID(ID)
+	list := ListID()
 	for !GoodListID(list, ID) {
-		list = ListID(ID)
+		list = ListID()
 	}
 	output := groupMonster{}
 	for i := range list {
