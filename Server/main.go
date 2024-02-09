@@ -55,6 +55,7 @@ func main() {
 	http.HandleFunc("/list", generateJSON)
 	http.HandleFunc("/delete", deleteMonster)
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/wiki", wikiHandler)
 
 	fmt.Println(string(green), "Server started on port 8080")
 	fmt.Println(string(red), "Press Ctrl+C to quit")
@@ -112,6 +113,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	renderHTML(w, response.Monsters, "index.html") // Render the HTML file
+}
+
+func wikiHandler(w http.ResponseWriter, r *http.Request) {
+		/*
+	The wikiHandler func handle the wiki page.
+	---------------------------------------------------------
+	The func dosen't have error case.
+	*/
+	renderHTML(w, nil, "wiki.html")
 }
 
 func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
