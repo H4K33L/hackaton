@@ -40,7 +40,7 @@ prerequisites : On a WSL instal golang
 
 On the github page of the project download it at .ZIP, after the download unzip the project in your WSL.
 
-And TaDam tipe the comand "go run serveur.go" and go to localhost:8000 page and read the wiki on the site
+And TaDam tipe the comand "go run Serveur/main.go" and go to localhost:8000 page and read the wiki on the site
 to now how to use it.
 
 # ------------------------------------------------------------------------------------------------------- #
