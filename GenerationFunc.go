@@ -3,13 +3,73 @@ package Monster
 import (
     "math/rand"
     "strconv"
+	"fmt"
 )
 
-func Useles()  {
+func Useles() {
 	/*
 	A POOP !
 	*/
-	
+	fmt.Print("A")
+	fmt.Print(" ")
+	fmt.Print("U")
+	fmt.Print("S")
+	fmt.Print("E")
+	fmt.Print("L")
+	fmt.Print("E")
+	fmt.Print("S")
+	fmt.Print(" ")
+	fmt.Print("F")
+	fmt.Print("U")
+	fmt.Print("N")
+	fmt.Print("C")
+	fmt.Print("T")
+	fmt.Print("I")
+	fmt.Print("O")
+	fmt.Print("N")
+	fmt.Print(" ")
+	fmt.Print("A")
+	fmt.Print("N")
+	fmt.Print("D")
+	fmt.Print(" ")
+	fmt.Print("I")
+	fmt.Print(" ")
+	fmt.Print("D")
+	fmt.Print("'")
+	fmt.Print("N")
+	fmt.Print("T")
+	fmt.Print(" ")
+	fmt.Print("N")
+	fmt.Print("O")
+	fmt.Print("W")
+	fmt.Print(" ")
+	fmt.Print("W")
+	fmt.Print("H")
+	fmt.Print("A")
+	fmt.Print("T")
+	fmt.Print(" ")
+	fmt.Print("T")
+	fmt.Print("O")
+	fmt.Print(" ")
+	fmt.Print("S")
+	fmt.Print("A")
+	fmt.Print("Y")
+	fmt.Print(" ")
+	fmt.Print("M")
+	fmt.Print("O")
+	fmt.Print("R")
+	fmt.Print("E")
+	fmt.Print(" ")
+	fmt.Print("T")
+	fmt.Print("H")
+	fmt.Print("A")
+	fmt.Print("N")
+	fmt.Print(" ")
+	fmt.Print("T")
+	fmt.Print("H")
+	fmt.Print("A")
+	fmt.Print("T")
+	fmt.Print("!")
 }
 
 func Size(creature monster) monster {
