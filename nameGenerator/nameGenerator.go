@@ -6,32 +6,32 @@ import (
 	"fmt"
 	"html/template"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"strconv"
-	"math/rand"
 )
 
 type Monsters struct {
-	Name				string				`json:"Name"`
-	ID					int					`json:"ID"`
-	MonsterType			string				`json:"MonsterType"`
-	Size				string				`json:"Size"`
-	Alignment			string				`json:"Alignment"`
-	Caract				map[string]int		`json:"Caract"`
-	CaractMod			map[string]int		`json:"CaractMod"`
-	Mastery				int					`json:"Mastery"`
-	AC					string				`json:"AC"`
-	LP					string				`json:"LP"`
-	Resistance			[]string			`json:"Resistance"`
-	Vulnerability		[]string			`json:"Vulnerability"`
-	Immunity			[]string			`json:"Immunity"`
-	AttacBonnus			int					`json:"AttacBonnus"`
-	DD					int					`json:"DD"`
-	Speed				map[string]int		`json:"Speed"`
-	SaveRoll			map[string]int		`json:"SaveRoll"`
-	StateImmunity		[]string			`json:"StateImmunity"`
-	Sense				[]string			`json:"Sense"`
-	Languages			[]string			`json:"Languages"`
+	Name          string         `json:"Name"`
+	ID            int            `json:"ID"`
+	MonsterType   string         `json:"MonsterType"`
+	Size          string         `json:"Size"`
+	Alignment     string         `json:"Alignment"`
+	Caract        map[string]int `json:"Caract"`
+	CaractMod     map[string]int `json:"CaractMod"`
+	Mastery       int            `json:"Mastery"`
+	AC            string         `json:"AC"`
+	LP            string         `json:"LP"`
+	Resistance    []string       `json:"Resistance"`
+	Vulnerability []string       `json:"Vulnerability"`
+	Immunity      []string       `json:"Immunity"`
+	AttacBonnus   int            `json:"AttacBonnus"`
+	DD            int            `json:"DD"`
+	Speed         map[string]int `json:"Speed"`
+	SaveRoll      map[string]int `json:"SaveRoll"`
+	StateImmunity []string       `json:"StateImmunity"`
+	Sense         []string       `json:"Sense"`
+	Languages     []string       `json:"Languages"`
 }
 
 type MonsterResponse struct {
@@ -85,9 +85,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	var response MonsterResponse
 	err = json.Unmarshal(body, &response)
-		if err != nil {
-    http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
-    return
+	if err != nil {
+		http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
+		return
 	}
 
 	renderHTML(w, response.Monsters, "index.html")
@@ -134,26 +134,26 @@ func generate(number int, race string) {
 		ID := 1
 		monster := Monster.GenerateMonster(raceMonster, ID)
 		monsterData := Monsters{
-			Name:           name,
-			ID:             ID,
-			MonsterType:    monster.MonsterType,
-			Size:           monster.Size,
-			Alignment:      monster.Alignment,
-			Caract:         monster.Caract,
-			CaractMod:      monster.CaractMod,
-			Mastery:        monster.Mastery,
-			AC:             monster.AC,
-			LP:             monster.LP,
-			Resistance:     monster.Resistance,
-			Vulnerability:  monster.Vulnerability,
-			Immunity:       monster.Immunity,
-			AttacBonnus:    monster.AttacBonnus,
-			DD:             monster.DD,
-			Speed:          monster.Speed,
-			SaveRoll:       monster.SaveRoll,
-			StateImmunity:  monster.StateImmunity,
-			Sense:          monster.Sense,
-			Languages:      monster.Languages,
+			Name:          name,
+			ID:            ID,
+			MonsterType:   monster.MonsterType,
+			Size:          monster.Size,
+			Alignment:     monster.Alignment,
+			Caract:        monster.Caract,
+			CaractMod:     monster.CaractMod,
+			Mastery:       monster.Mastery,
+			AC:            monster.AC,
+			LP:            monster.LP,
+			Resistance:    monster.Resistance,
+			Vulnerability: monster.Vulnerability,
+			Immunity:      monster.Immunity,
+			AttacBonnus:   monster.AttacBonnus,
+			DD:            monster.DD,
+			Speed:         monster.Speed,
+			SaveRoll:      monster.SaveRoll,
+			StateImmunity: monster.StateImmunity,
+			Sense:         monster.Sense,
+			Languages:     monster.Languages,
 		}
 
 		monsters = append(monsters, monsterData)
@@ -189,9 +189,9 @@ func setStrength(strength int) string {
 		power = "surpuissant"
 	} else if strength <= 25 {
 		power = "légendaire"
-	} else if strength <= 29{
+	} else if strength <= 29 {
 		power = "mythique"
-	} else if strength == 30{
+	} else if strength == 30 {
 		power = "divin"
 	}
 	return power
@@ -210,9 +210,9 @@ func setArmor(armor int) string {
 		protection = "très protégé"
 	} else if armor <= 25 {
 		protection = "blindé"
-	} else if armor <= 29{
+	} else if armor <= 29 {
 		protection = "impenetrable"
-	} else if armor == 30{
+	} else if armor == 30 {
 		protection = "invincible"
 	}
 
@@ -251,111 +251,111 @@ func nameGenerator(strenght int, race string, armor int) string {
 	}
 
 	fmt.Println("(" + race + " " + setStrength(strenght) + ") " + name + " " + setArmor(armor))
-	return "(" + race + " " + setStrength(strenght) +") " + name + " " + setArmor(armor)
+	return "(" + race + " " + setStrength(strenght) + ") " + name + " " + setArmor(armor)
 }
 
 func generateAberrationName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    aberrationEndings := []string{"grix", "xal", "vor", "zith", "thor", "quex", "lix", "vyr", "nar", "zur", "myr"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	aberrationEndings := []string{"grix", "xal", "vor", "zith", "thor", "quex", "lix", "vyr", "nar", "zur", "myr"}
 
-    return generateName(vowels, consonants, aberrationEndings)
+	return generateName(vowels, consonants, aberrationEndings)
 }
 
 func generateBeastName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    beastEndings := []string{"fang", "claw", "fur", "mane", "tooth", "hide", "scale", "talon", "growl", "snarl", "roar"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	beastEndings := []string{"fang", "claw", "fur", "mane", "tooth", "hide", "scale", "talon", "growl", "snarl", "roar"}
 
-    return generateName(vowels, consonants, beastEndings)
+	return generateName(vowels, consonants, beastEndings)
 }
 
 func generateConstructionName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    constructionEndings := []string{"forge", "stone", "hammer", "builder", "craft", "mason", "wright", "arch", "construct", "craftsman", "artisan"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	constructionEndings := []string{"forge", "stone", "hammer", "builder", "craft", "mason", "wright", "arch", "construct", "craftsman", "artisan"}
 
-    return generateName(vowels, consonants, constructionEndings)
+	return generateName(vowels, consonants, constructionEndings)
 }
 
 func generateDragonName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    dragonEndings := []string{"gon", "drak", "myr", "sorn", "fyre", "thor", "cryx", "lorn", "shyx", "wyr", "garr"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	dragonEndings := []string{"gon", "drak", "myr", "sorn", "fyre", "thor", "cryx", "lorn", "shyx", "wyr", "garr"}
 
-    return generateName(vowels, consonants, dragonEndings)
+	return generateName(vowels, consonants, dragonEndings)
 }
 
 func generateCelestialName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    celestialEndings := []string{"el", "ius", "on", "a", "iel", "or", "an", "eth", "iel", "iel", "ius"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	celestialEndings := []string{"el", "ius", "on", "a", "iel", "or", "an", "eth", "iel", "iel", "ius"}
 
-    return generateName(vowels, consonants, celestialEndings)
+	return generateName(vowels, consonants, celestialEndings)
 }
 
 func generateElementalName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    elementalEndings := []string{"us", "en", "or", "il", "ar", "th", "on", "ix", "al", "ir", "er"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	elementalEndings := []string{"us", "en", "or", "il", "ar", "th", "on", "ix", "al", "ir", "er"}
 
-    return generateName(vowels, consonants, elementalEndings)
+	return generateName(vowels, consonants, elementalEndings)
 }
 
 func generateFairyName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    fairyEndings := []string{"dara", "wyn", "belle", "luna", "star", "ella", "fey", "briar", "thistle", "ivy", "lily"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	fairyEndings := []string{"dara", "wyn", "belle", "luna", "star", "ella", "fey", "briar", "thistle", "ivy", "lily"}
 
-    return generateName(vowels, consonants, fairyEndings)
+	return generateName(vowels, consonants, fairyEndings)
 }
 
 func generateDemonName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    demonEndings := []string{"on", "yx", "mor", "thor", "gath", "nyx", "zel", "vex", "zor", "mar", "rak"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	demonEndings := []string{"on", "yx", "mor", "thor", "gath", "nyx", "zel", "vex", "zor", "mar", "rak"}
 
-    return generateName(vowels, consonants, demonEndings)
+	return generateName(vowels, consonants, demonEndings)
 }
 
 func generateGiantName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    giantEndings := []string{"rock", "stone", "hurl", "smash", "crush", "thud", "grind", "brawl", "bash", "quake", "smash"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	giantEndings := []string{"rock", "stone", "hurl", "smash", "crush", "thud", "grind", "brawl", "bash", "quake", "smash"}
 
-    return generateName(vowels, consonants, giantEndings)
+	return generateName(vowels, consonants, giantEndings)
 }
 
 func generateHumanoidName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    humanoidEndings := []string{"um", "ar", "on", "ix", "el", "yss", "or", "en", "io", "us", "ath"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	humanoidEndings := []string{"um", "ar", "on", "ix", "el", "yss", "or", "en", "io", "us", "ath"}
 
-    return generateName(vowels, consonants, humanoidEndings)
+	return generateName(vowels, consonants, humanoidEndings)
 }
 
 func generateMonstrosityName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    monstrosityEndings := []string{"ith", "gor", "lox", "shun", "fex", "garr", "thor", "maw", "grox", "lith", "sor"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	monstrosityEndings := []string{"ith", "gor", "lox", "shun", "fex", "garr", "thor", "maw", "grox", "lith", "sor"}
 
-    return generateName(vowels, consonants, monstrosityEndings)
+	return generateName(vowels, consonants, monstrosityEndings)
 }
 
 func generatePlantName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    plantEndings := []string{"thorn", "bloom", "leaf", "root", "petal", "stalk", "fern", "vine", "moss", "seed", "twig"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	plantEndings := []string{"thorn", "bloom", "leaf", "root", "petal", "stalk", "fern", "vine", "moss", "seed", "twig"}
 
-    return generateName(vowels, consonants, plantEndings)
+	return generateName(vowels, consonants, plantEndings)
 }
 
 func generateUndeadName() string {
-    vowels := []string{"a", "e", "i", "o", "u", "y"}
-    consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
-    undeadEndings := []string{"aith", "hade", "tre", "wight", "eaper", "oul", "bie", "oul", "rit", "shee", "per"}
+	vowels := []string{"a", "e", "i", "o", "u", "y"}
+	consonants := []string{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z"}
+	undeadEndings := []string{"aith", "hade", "tre", "wight", "eaper", "oul", "bie", "oul", "rit", "shee", "per"}
 
-    return generateName(vowels, consonants, undeadEndings)
+	return generateName(vowels, consonants, undeadEndings)
 }
 
 func generateName(vowels, consonants, endings []string) string {
