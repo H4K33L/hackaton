@@ -2,6 +2,8 @@ package Monster
 
 import "math/rand"
 
+/*----------- This part of functions arent used to generate monster -----------*/
+
 func GenerateMonster(monsterType string, ID int) monster {
 	/*
 	The GenerateMonster function take a posible type for monster and an ID,
