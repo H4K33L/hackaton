@@ -54,10 +54,10 @@
                 <td>{{.Size}}</td>
                 <td>{{.Alignment}}</td>
                 <td>
-                    <form action="/delete" id="formDel">
+                    <form action="/delete" id="{{.Name}}">
                         <input type="text" id="name" name="name" value="{{.Name}}" style="display: none;"/>
                     </form>
-                    <button type="submit" form="formDel">DELETE</button>
+                    <button type="submit" form="{{.Name}}">DELETE</button>
                 </td>
             </tr>
         {{end}}
