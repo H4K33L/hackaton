@@ -7,7 +7,35 @@ import (
 	"html/template"
 	"io/ioutil"
 	"net/http"
-	"strconv")
+	"strconv"
+)
+
+type monster struct {
+	Name				string				`json:"Name"`
+	ID					int					`json:"ID"`
+	MonsterType			string				`json:"MonsterType"`
+	Size				string				`json:"Size"`
+	Alignment			string				`json:"Alignment"`
+	Caract				map[string]int		`json:"Caract"`
+	CaractMod			map[string]int		`json:"CaractMod"`
+	Mastery				int					`json:"Mastery"`
+	AC					string				`json:"AC"`
+	LP					string				`json:"LP"`
+	Resistance			[]string			`json:"Resistance"`
+	Vulnerability		[]string			`json:"Vulnerability"`
+	Immunity			[]string			`json:"Immunity"`
+	AttacBonnus			int					`json:"AttacBonnus"`
+	DD					int					`json:"DD"`
+	Speed				map[string]int		`json:"Speed"`
+	SaveRoll			map[string]int		`json:"SaveRoll"`
+	StateImmunity		[]string			`json:"StateImmunity"`
+	Sense				[]string			`json:"Sense"`
+	Languages			[]string			`json:"Languages"`
+}
+
+type groupMonster struct {
+	Monsters			[]monster			`json:"Monsters"`
+}
 
 
 func main() {
@@ -17,7 +45,7 @@ func main() {
 
 	fmt.Println(blue, "starting server on port 8080...")
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("C:/Users/louka/Documents/YNOV/hackaton/nameGenerator/static/"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
 	http.HandleFunc("/list", generateJSON)
 	http.HandleFunc("/delete", deleteMonster)
@@ -95,7 +123,7 @@ func deleteMonster(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    newMonsters := make([]Monsters, 0)
+    newMonsters := make([]monster, 0)
     for _, monster := range response.Monsters {
         if monster.Name != name {
             newMonsters = append(newMonsters, monster)
