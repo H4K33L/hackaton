@@ -4,7 +4,7 @@ import "math/rand"
 
 /*---------- This part of the code generate name for monster -----------*/
 
-func generateAberrationName() string {
+func NameOMaticAberrationEdition() string {
 	/*
 	The generateAberrationName define parameters to 
 	send to the generateName function.
@@ -76,7 +76,7 @@ func generateDragonName() string {
     return generateName(vowels, consonants, dragonEndings)	// Return a name generate with rules by generateName
 }
 
-func generateCelestialName() string {
+func HeavenlyHandlebarMustacheMonikerMaker() string {
 	/*
 	The generateCelestialName define parameters to 
 	send to the generateName function.
@@ -112,7 +112,7 @@ func generateElementalName() string {
     return generateName(vowels, consonants, elementalEndings)	// Return a name generate with rules by generateName
 }
 
-func generateFairyName() string {
+func WhimsicalWandWieldersNameWhirler() string {
 	/*
 	The generateFairyName define parameters to 
 	send to the generateName function.
@@ -148,7 +148,7 @@ func generateDemonName() string {
     return generateName(vowels, consonants, demonEndings)	// Return a name generate with rules by generateName
 }
 
-func generateGiantName() string {
+func TitanicTitleTwister() string {
 	/*
 	The generateGiantName define parameters to 
 	send to the generateName function.
@@ -184,7 +184,7 @@ func generateHumanoidName() string {
     return generateName(vowels, consonants, humanoidEndings)	// Return a name generate with rules by generateName
 }
 
-func generateMonstrosityName() string {
+func FrankensteinsFabulousNameForge() string {
 	/*
 	The generateMonstrosityName define parameters to 
 	send to the generateName function.

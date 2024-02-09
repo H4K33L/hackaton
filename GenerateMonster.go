@@ -55,7 +55,7 @@ func nameGenerator(strenght int, race string, armor int) string {
 
 	switch race {
 	case "Aberration":
-		name = generateAberrationName()
+		name = NameOMaticAberrationEdition()
 	case "Bête":
 		name = generateBeastName()
 	case "Artéfact":
@@ -63,19 +63,19 @@ func nameGenerator(strenght int, race string, armor int) string {
 	case "Dragon":
 		name = generateDragonName()
 	case "Céleste":
-		name = generateCelestialName()
+		name = HeavenlyHandlebarMustacheMonikerMaker()
 	case "Élémentaire":
 		name = generateElementalName()
 	case "Fée":
-		name = generateFairyName()
+		name = WhimsicalWandWieldersNameWhirler()
 	case "Démon":
 		name = generateDemonName()
 	case "Géant":
-		name = generateGiantName()
+		name = TitanicTitleTwister()
 	case "Humanoïde":
 		name = generateHumanoidName()
 	case "Monstruosité":
-		name = generateMonstrosityName()
+		name = FrankensteinsFabulousNameForge()
 	case "Plante":
 		name = generatePlantName()
 	case "Mort-vivant":
