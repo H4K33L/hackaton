@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
     <title>name generator</title>
 </head>
 <body>
@@ -39,58 +40,32 @@
           <th>Monster Type</th>
           <th>Size</th>
           <th>Alignment</th>
-          <th>Caract</th>
-          <th>CaractMod</th>
-          <th>Mastery</th>
-          <th>AC</th>
-          <th>LP</th>
-          <th>Resistance</th>
-          <th>Vulnerability</th>
-          <th>Immunity</th>
-          <th>Attack Bonnus</th>
-          <th>DD</th>
-          <th>Speed</th>
-          <th>Save Roll</th>
-          <th>State Immunity</th>
-          <th>Sense</th>
-          <th>Languages</th>
         </tr>
         {{range .}}
-        <tr>
-            <td>{{.Name}}</td>
-            <td>{{.ID}}</td>
-            <td>{{.MonsterType}}</td>
-            <td>{{.Size}}</td>
-            <td>{{.Alignment}}</td>
-            <td>{{.Caract}}</td>
-            <td>{{.CaractMod}}</td>
-            <td>{{.Mastery}}</td>
-            <td>{{.AC}}</td>
-            <td>{{.LP}}</td>
-            <td>{{.Resistance}}</td>
-            <td>{{.Vulnerability}}</td>
-            <td>{{.Immunity}}</td>
-            <td>{{.AttacBonnus}}</td>
-            <td>{{.DD}}</td>
-            <td>{{.Speed}}</td>
-            <td>{{.SaveRoll}}</td>
-            <td>{{.StateImmunity}}</td>
-            <td>{{.Sense}}</td>
-            <td>{{.Languages}}</td>
-        </tr>
+            <tr>
+                <td>
+                    <section class="card"  onclick="toggleMonster('{{.Name}}')">
+                        {{.Name}}
+                    </section>
+                </td>
+                <td>{{.ID}}</td>
+                <td>{{.MonsterType}}</td>
+                <td>{{.Size}}</td>
+                <td>{{.Alignment}}</td>
+            </tr>
         {{end}}
     </table>
 
     {{range .}}
-    <div class="popupMonster">
+    <div class="popupMonster" data-monster-id = "{{.Name}}"  >
         <div class="popup-content">
-            <a href="javascript:void(0)" onclick="toggleArtist('{{.Id}}')" class="popup-exit">
+            <a href="javascript:void(0)" onclick="toggleMonster('{{.Name}}')" class="popup-exit">
                 <i class="material-icons">
                     close
                 </i>
             </a>
             <div class="info">
-                <h2>{{.Name}}</h2>
+                <p>{{.Name}}</p>
                 <p>{{.ID}}</p>
                 <p>{{.MonsterType}}</p>
                 <p>{{.Size}}</p>
@@ -112,6 +87,7 @@
                 <p>{{.Languages}}</p>
             </div>
         </div>
+        <script src="static/js/popup.js"></script>
     </div>
     {{end}}
 

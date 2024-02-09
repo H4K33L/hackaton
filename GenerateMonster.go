@@ -45,13 +45,13 @@ func nameGenerator(strenght int, race string, armor int) string {
 		name = generateUndeadName()
 	}
 
-	return "(" + race + " " + setStrength(strenght) +") " + name + " " + setArmor(armor)
+	return name + " " + setArmor(armor) + " et " + setStrength(strenght)
 }
 
 func Generate(monsterType string, ID int) error {
 	monsters := groupMonster{}
 
-	filepath := "Data/monster.json"
+	filepath := "../Data/monster.json"
 
 	monsters, err := PullMonsters(filepath)
 	if err != nil {

@@ -1,43 +1,57 @@
 package main
 
 import (
+	"Monster"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"io/ioutil"
-	"math/rand"
 	"net/http"
 	"strconv"
 )
 
 type Monsters struct {
-	Name           string
-	ID             int
-	MonsterType    string
-	Size           string
-	Alignment      string
-	Caract         map[string]int
-	CaractMod      map[string]int
-	Mastery        int
-	AC             string
-	LP             string
-	Resistance     []string
-	Vulnerability  []string
-	Immunity       []string
-	AttacBonnus    int
-	DD             int
-	Speed          map[string]int
-	SaveRoll       map[string]int
-	StateImmunity  []string
-	Sense          []string
-	Languages      []string
+	Name				string				`json:"Name"`
+	ID					int					`json:"ID"`
+	MonsterType			string				`json:"MonsterType"`
+	Size				string				`json:"Size"`
+	Alignment			string				`json:"Alignment"`
+	Caract				map[string]int		`json:"Caract"`
+	CaractMod			map[string]int		`json:"CaractMod"`
+	Mastery				int					`json:"Mastery"`
+	AC					string				`json:"AC"`
+	LP					string				`json:"LP"`
+	Resistance			[]string			`json:"Resistance"`
+	Vulnerability		[]string			`json:"Vulnerability"`
+	Immunity			[]string			`json:"Immunity"`
+	AttacBonnus			int					`json:"AttacBonnus"`
+	DD					int					`json:"DD"`
+	Speed				map[string]int		`json:"Speed"`
+	SaveRoll			map[string]int		`json:"SaveRoll"`
+	StateImmunity		[]string			`json:"StateImmunity"`
+	Sense				[]string			`json:"Sense"`
+	Languages			[]string			`json:"Languages"`
 }
 
-var race = []string{"Aberration", "Bête", "Artéfact", "Dragon", "Céleste", "Élémentaire", "Fée", "Démon", "Géant", "Humanoïde", "Monstruosité", "Plante", "Mort-vivant"}
+type MonsterResponse struct {
+	Monsters []Monsters `json:"Monsters"`
+}
 
 func main() {
+	blue := "\033[1;34m"
+	green := "\033[1;32m"
+	red := "\033[1;31m"
+
+	fmt.Println(blue, "starting server on port 8080...")
+
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("C:/Users/louka/Documents/YNOV/hackaton/nameGenerator/static/"))))
+
 	http.HandleFunc("/list", generateJSON)
 	http.HandleFunc("/", handler)
+
+	fmt.Println(string(green), "Server started on port 8080")
+	fmt.Println(string(red), "Press Ctrl+C to quit")
+
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -53,28 +67,29 @@ func generateJSON(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Erreur lors de la lecture de l'ID", http.StatusBadRequest)
 		return
 	}
-	generate(number, monsterType, ID)
+	Monster.Generate(monsterType, ID)
+	fmt.Println("Nombre de monstres à générer:", number)
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 
 	handler(w, r)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	filePath := "monster.json"
+	filePath := "../Data/monster.json"
 	body, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		http.Error(w, "Erreur lors de la lecture du fichier JSON", http.StatusInternalServerError)
 		return
 	}
 
-	var names []Monsters
-	err = json.Unmarshal(body, &names)
-	if err != nil {
-		http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
-		return
+	var response MonsterResponse
+	err = json.Unmarshal(body, &response)
+		if err != nil {
+    http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
+    return
 	}
 
-	renderHTML(w, names, "index.html")
+	renderHTML(w, response.Monsters, "index.html")
 }
 
 func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
