@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
-    <title>name generator</title>
+    <title>Monster Generator</title>
 </head>
 <body>
     <form action="/list" method="GET">
@@ -54,10 +54,10 @@
                 <td>{{.Size}}</td>
                 <td>{{.Alignment}}</td>
                 <td>
-                    <form action="/delete" id="formDel">
+                    <form action="/delete" id="{{.Name}}">
                         <input type="text" id="name" name="name" value="{{.Name}}" style="display: none;"/>
                     </form>
-                    <button type="submit" form="formDel">DELETE</button>
+                    <button type="submit" form="{{.Name}}">DELETE</button>
                 </td>
             </tr>
         {{end}}
@@ -97,6 +97,8 @@
         <script src="static/js/popup.js"></script>
     </div>
     {{end}}
+
+    <a href="/wiki">User Wiki</a>
 
 </body>
 </html>
