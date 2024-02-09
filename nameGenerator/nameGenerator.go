@@ -46,6 +46,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("C:/Users/louka/Documents/YNOV/hackaton/nameGenerator/static/"))))
 
 	http.HandleFunc("/list", generateJSON)
+	http.HandleFunc("/delete", deleteMonster)
 	http.HandleFunc("/", handler)
 
 	fmt.Println(string(green), "Server started on port 8080")
@@ -103,4 +104,45 @@ func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
 		return
 	}
 }
+
+func deleteMonster(w http.ResponseWriter, r *http.Request) {
+	name := r.URL.Query().Get("name")
+	filePath := "../Data/monster.json"
+	body, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, "Erreur lors de la lecture du fichier JSON", http.StatusInternalServerError)
+		return
+	}
+	
+	var response groupMonster
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
+		return
+	}
+
+	for i, monster := range response.Monsters {
+		if monster.Name == name {
+			response.Monsters = append(response.Monsters[:i], response.Monsters[i+1:]...)
+			break
+		}
+	}
+
+	newData, err := json.Marshal(response)
+	if err != nil {
+		http.Error(w, "Erreur lors de la conversion en JSON", http.StatusInternalServerError)
+		return
+	}
+
+	err = ioutil.WriteFile(filePath, newData, 0644)
+	if err != nil {
+		http.Error(w, "Erreur lors de l'écriture dans le fichier JSON", http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/", http.StatusSeeOther)
+
+	handler(w, r)
+}
+
 
