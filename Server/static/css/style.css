@@ -1,33 +1,71 @@
 @import url(https://fonts.bunny.net/css?family=bokor:400);
 
-.popupMonster {
-    display: none;
-}
-
-.popupMonster.open {
-    display: block;
-}
-
 body {
     font-family: 'Arial', sans-serif;
-    margin-left: 5px;
-    margin-right: 5px;
-    color: #000;
-    padding-left: 100px;
-    padding-right: 100px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+form label,
+form input {
+    margin: 5px;
+}
+
+form input[type="submit"] {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #000;
+}
+
+table {
+    margin: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #000;
+    color: #FFFFFF;
 }
 
 .popupMonster {
-    background-image: url("../image/1971657.jpg");
-    border-top: 5px solid #8b4513;
-    border-bottom: 5px solid #8b4513; 
+    background-image: url("../img/1971657.jpg");
+    font-family: 'bokor', sans-serif;
     padding: 20px;
+    border: 1px ;
     margin: 50px auto;
     max-width: 600px;
-    font-family: 'bokor', sans-serif;
     color: #000;
     text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
+    border: 5px solid #B22222;
+}
+
+.name {
+    font-size: 30px;
 }

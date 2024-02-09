@@ -11,32 +11,31 @@ import (
 )
 
 type monster struct {
-	Name				string				`json:"Name"`
-	ID					int					`json:"ID"`
-	MonsterType			string				`json:"MonsterType"`
-	Size				string				`json:"Size"`
-	Alignment			string				`json:"Alignment"`
-	Caract				map[string]int		`json:"Caract"`
-	CaractMod			map[string]int		`json:"CaractMod"`
-	Mastery				int					`json:"Mastery"`
-	AC					string				`json:"AC"`
-	LP					string				`json:"LP"`
-	Resistance			[]string			`json:"Resistance"`
-	Vulnerability		[]string			`json:"Vulnerability"`
-	Immunity			[]string			`json:"Immunity"`
-	AttacBonnus			int					`json:"AttacBonnus"`
-	DD					int					`json:"DD"`
-	Speed				map[string]int		`json:"Speed"`
-	SaveRoll			map[string]int		`json:"SaveRoll"`
-	StateImmunity		[]string			`json:"StateImmunity"`
-	Sense				[]string			`json:"Sense"`
-	Languages			[]string			`json:"Languages"`
+	Name          string         `json:"Name"`
+	ID            int            `json:"ID"`
+	MonsterType   string         `json:"MonsterType"`
+	Size          string         `json:"Size"`
+	Alignment     string         `json:"Alignment"`
+	Caract        map[string]int `json:"Caract"`
+	CaractMod     map[string]int `json:"CaractMod"`
+	Mastery       int            `json:"Mastery"`
+	AC            string         `json:"AC"`
+	LP            string         `json:"LP"`
+	Resistance    []string       `json:"Resistance"`
+	Vulnerability []string       `json:"Vulnerability"`
+	Immunity      []string       `json:"Immunity"`
+	AttacBonnus   int            `json:"AttacBonnus"`
+	DD            int            `json:"DD"`
+	Speed         map[string]int `json:"Speed"`
+	SaveRoll      map[string]int `json:"SaveRoll"`
+	StateImmunity []string       `json:"StateImmunity"`
+	Sense         []string       `json:"Sense"`
+	Languages     []string       `json:"Languages"`
 }
 
 type groupMonster struct {
-	Monsters			[]monster			`json:"Monsters"`
+	Monsters []monster `json:"Monsters"`
 }
-
 
 func main() {
 	blue := "\033[1;34m"
@@ -45,7 +44,7 @@ func main() {
 
 	fmt.Println(blue, "starting server on port 8080...")
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
 
 	http.HandleFunc("/list", generateJSON)
 	http.HandleFunc("/delete", deleteMonster)
@@ -85,9 +84,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	var response groupMonster
 	err = json.Unmarshal(body, &response)
-		if err != nil {
-    http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
-    return
+	if err != nil {
+		http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
+		return
 	}
 
 	renderHTML(w, response.Monsters, "index.html")
@@ -108,40 +107,40 @@ func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
 }
 
 func deleteMonster(w http.ResponseWriter, r *http.Request) {
-    name := r.URL.Query().Get("name")
-    filePath := "../Data/monster.json"
-    body, err := ioutil.ReadFile(filePath)
-    if err != nil {
-        http.Error(w, "Erreur lors de la lecture du fichier JSON", http.StatusInternalServerError)
-        return
-    }
-    
-    var response groupMonster
-    err = json.Unmarshal(body, &response)
-    if err != nil {
-        http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
-        return
-    }
+	name := r.URL.Query().Get("name")
+	filePath := "../Data/monster.json"
+	body, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, "Erreur lors de la lecture du fichier JSON", http.StatusInternalServerError)
+		return
+	}
 
-    newMonsters := make([]monster, 0)
-    for _, monster := range response.Monsters {
-        if monster.Name != name {
-            newMonsters = append(newMonsters, monster)
-        }
-    }
-    response.Monsters = newMonsters
+	var response groupMonster
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		http.Error(w, "Erreur lors de l'analyse JSON", http.StatusInternalServerError)
+		return
+	}
 
-    newData, err := json.Marshal(response)
-    if err != nil {
-        http.Error(w, "Erreur lors de la conversion en JSON", http.StatusInternalServerError)
-        return
-    }
+	newMonsters := make([]monster, 0)
+	for _, monster := range response.Monsters {
+		if monster.Name != name {
+			newMonsters = append(newMonsters, monster)
+		}
+	}
+	response.Monsters = newMonsters
 
-    err = ioutil.WriteFile(filePath, newData, 0644)
-    if err != nil {
-        http.Error(w, "Erreur lors de l'écriture dans le fichier JSON", http.StatusInternalServerError)
-        return
-    }
+	newData, err := json.Marshal(response)
+	if err != nil {
+		http.Error(w, "Erreur lors de la conversion en JSON", http.StatusInternalServerError)
+		return
+	}
+
+	err = ioutil.WriteFile(filePath, newData, 0644)
+	if err != nil {
+		http.Error(w, "Erreur lors de l'écriture dans le fichier JSON", http.StatusInternalServerError)
+		return
+	}
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 

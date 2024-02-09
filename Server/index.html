@@ -72,26 +72,33 @@
                 </i>
             </a>
             <div class="info">
-                <p>{{.Name}}</p>
-                <p>{{.ID}}</p>
-                <p>{{.MonsterType}}</p>
-                <p>{{.Size}}</p>
-                <p>{{.Alignment}}</p>
-                <p>{{.Caract}}</p>
-                <p>{{.CaractMod}}</p>
-                <p>{{.Mastery}}</p>
-                <p>{{.AC}}</p>
-                <p>{{.LP}}</p>
-                <p>{{.Resistance}}</p>
-                <p>{{.Vulnerability}}</p>
-                <p>{{.Immunity}}</p>
-                <p>{{.AttacBonnus}}</p>
-                <p>{{.DD}}</p>
-                <p>{{.Speed}}</p>
-                <p>{{.SaveRoll}}</p>
-                <p>{{.StateImmunity}}</p>
-                <p>{{.Sense}}</p>
-                <p>{{.Languages}}</p>
+                <p class="name">{{.Name}}</p>
+                <p>Type {{.MonsterType}}</p>
+                <p>Taille {{.Size}}</p>
+                <p>Alignement {{.Alignment}}</p>
+                <p>CA {{.AC}}</p>
+                <p>PV {{.LP}}</p>
+                <p>Vitesse {{range $key, $value := .Speed}}
+                    {{$key}} : {{$value}}
+                    {{end}}
+                </p> 
+                <p>Valeurs caractéristiques {{range $key, $value := .Caract}}
+                    {{$key}} : {{$value}}
+                    {{end}}</p>
+                <p>Modificateur caractéristiques {{range $key, $value := .CaractMod}}
+                    {{$key}} : {{$value}} 
+                    {{end}}</p>
+                    <p>Jets de sauvegarde {{range $key, $value := .SaveRoll}}
+                        {{$key}} : {{$value}}
+                        {{end}}</p>
+                <p>Bonus {{.Mastery}}</p>
+                <p>Resistances {{.Resistance}}</p>
+                <p>Vulnérabilités {{.Vulnerability}}</p>
+                <p>Immunités {{.Immunity}}</p>
+                <p>Resistance aux états {{.StateImmunity}}</p>
+                <p>Sens {{.Sense}}</p>
+                <p>Langues {{.Languages}}</p>
+                <p>Puissance {{.ID}}</p>
             </div>
         </div>
         <script src="static/js/popup.js"></script>
