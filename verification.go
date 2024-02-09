@@ -3,6 +3,20 @@ package Monster
 import "strconv"
 
 func GoodID(monstre monster) bool {
+	/*
+	The GoodID take a monster struct and return a boolean if the ID 
+	of monster is correct whith the monster Resistance, vulnerability 
+	and imunity an amount of LP. The function return false if the 
+	monster dosen't have the good ID an true if the amount of LP 
+	concording whith the ID.
+	All ID have interval of LP, see Donjon&Dragon Master Rulle.
+	------------------------------------------------------------------
+	input : a monster struct
+	output : a boolean
+	------------------------------------------------------------------
+	the function dosen't have arror case.
+	*/
+
 	LP := float64(GetLP(monstre.LP))
 	if monstre.ID <= 4 {
 		if len(monstre.Resistance) >= 3 {
@@ -237,6 +251,16 @@ func GoodID(monstre monster) bool {
 }
 
 func GetLP(info string) int {
+	/*
+	The GetLP function take a string and return the first number 
+	in a string, "12 png" return 12 "j54 lm" return a 0.
+	-------------------------------------------------------------
+	input : a string
+	output : an int
+	-------------------------------------------------------------
+	there is no error case in this function
+	*/
+
 	output := ""
 	for i := range info {
 		if info[i] == ' ' {
@@ -252,6 +276,20 @@ func GetLP(info string) int {
 }
 
 func GoodListID(list []int, ID int) bool {
+	/*
+	The GoodListID take an array of int (representing a group of monster) 
+	and an int representing the ID of the group and return boolean. 
+	False if the ID of the group is hover the ID in parameters, True
+	if the ID of the group is the same as ID in parameter.
+	To calculate the ID of a group we use the DnD 5 rules, see 
+	Donjon&Dragon Master Rulle.
+	------------------------------------------------------------------
+	input : an array of int an an int
+	output : a boolean
+	------------------------------------------------------------------
+	the function dosen't have arror case.
+	*/
+
 	if len(list) == 1 {
 		return list[0] == ID
 	} else if len(list) == 2 {
