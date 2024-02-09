@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>name generator</title>
+</head>
+<body>
+    <form action="/list" method="GET">
+        <label for="number">Choose the number of Monster : </label>
+        <input type="number" name="number" placeholder="enter the number of monster to generate" min="1" value="10">
+        <label for="monsterType">Choose your Monster Type : </label>
+        <input list="monsterType" name="type">
+        <datalist id="monsterType">
+            <option value="Aberration">
+            <option value="Bête">
+            <option value="Dragon">
+            <option value="Céleste">
+            <option value="Artéfact">
+            <option value="Élémentaire">
+            <option value="Fée">
+            <option value="Démon">
+            <option value="Géant">
+            <option value="Humanoïde">
+            <option value="Monstruosité">
+            <option value="Plante">
+            <option value="Mort-vivant">
+        </datalist>
+        <label for="ID">Choose the ID of Monster : </label>
+        <input type="number" name="ID" placeholder="enter the ID of the monster" min="1" max="30" value="1">
+        <input type="submit" value="Generate Name">
+    </form>
+    <br>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Monster Type</th>
+          <th>Size</th>
+          <th>Alignment</th>
+        </tr>
+        {{range .}}
+            <tr>
+                <td>
+                    <section class="card"  onclick="toggleMonster('{{.Name}}')">
+                        {{.Name}}
+                    </section>
+                </td>
+                <td>{{.ID}}</td>
+                <td>{{.MonsterType}}</td>
+                <td>{{.Size}}</td>
+                <td>{{.Alignment}}</td>
+            </tr>
+        {{end}}
+    </table>
+
+    {{range .}}
+    <div class="popupMonster" data-monster-id = "{{.Name}}"  >
+        <div class="popup-content">
+            <a href="javascript:void(0)" onclick="toggleMonster('{{.Name}}')" class="popup-exit">
+                <i class="material-icons">
+                    close
+                </i>
+            </a>
+            <div class="info">
+                <p>{{.Name}}</p>
+                <p>{{.ID}}</p>
+                <p>{{.MonsterType}}</p>
+                <p>{{.Size}}</p>
+                <p>{{.Alignment}}</p>
+                <p>{{.Caract}}</p>
+                <p>{{.CaractMod}}</p>
+                <p>{{.Mastery}}</p>
+                <p>{{.AC}}</p>
+                <p>{{.LP}}</p>
+                <p>{{.Resistance}}</p>
+                <p>{{.Vulnerability}}</p>
+                <p>{{.Immunity}}</p>
+                <p>{{.AttacBonnus}}</p>
+                <p>{{.DD}}</p>
+                <p>{{.Speed}}</p>
+                <p>{{.SaveRoll}}</p>
+                <p>{{.StateImmunity}}</p>
+                <p>{{.Sense}}</p>
+                <p>{{.Languages}}</p>
+            </div>
+        </div>
+        <script src="static/js/popup.js"></script>
+    </div>
+    {{end}}
+
+</body>
+</html>
