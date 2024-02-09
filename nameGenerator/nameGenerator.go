@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"math/rand"
 )
 
 type Monsters struct {
@@ -106,7 +107,7 @@ func renderHTML(w http.ResponseWriter, data interface{}, templateFile string) {
 	}
 }
 
-func generate(number int) {
+func generate(number int, race string) {
 	var monsters []Monsters
 
 	filepath := "monster.json"
@@ -127,7 +128,7 @@ func generate(number int) {
 
 	for i := 0; i < number; i++ {
 		strength := rand.Intn(30) + 1
-		raceMonster := race[rand.Intn(len(race))]
+		raceMonster := race
 		armor := rand.Intn(30) + 1
 		name := nameGenerator(strength, raceMonster, armor)
 		ID := 1
