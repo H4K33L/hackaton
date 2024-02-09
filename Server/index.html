@@ -40,6 +40,7 @@
           <th>Monster Type</th>
           <th>Size</th>
           <th>Alignment</th>
+          <th></th>
         </tr>
         {{range .}}
             <tr>
@@ -52,6 +53,12 @@
                 <td>{{.MonsterType}}</td>
                 <td>{{.Size}}</td>
                 <td>{{.Alignment}}</td>
+                <td>
+                    <form action="/delete" id="{{.Name}}">
+                        <input type="text" id="name" name="name" value="{{.Name}}" style="display: none;"/>
+                    </form>
+                    <button type="submit" form="{{.Name}}">DELETE</button>
+                </td>
             </tr>
         {{end}}
     </table>

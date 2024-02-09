@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	err := Monster.Generate("Aberration", 3)
+	err := Monster.Generate(1, "Aberration", 3)
 	if err != nil {
 		fmt.Println(err)
 	}

@@ -1,6 +1,9 @@
 package Monster
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func GenerateMonster(monsterType string, ID int) monster {
 	/*
@@ -53,7 +56,7 @@ func nameGenerator(strenght int, race string, armor int) string {
 		name = generateAberrationName()
 	case "Bête":
 		name = generateBeastName()
-	case "Construction":
+	case "Artéfact":
 		name = generateConstructionName()
 	case "Dragon":
 		name = generateDragonName()
@@ -81,7 +84,7 @@ func nameGenerator(strenght int, race string, armor int) string {
 	return "(" + race + " " + setStrength(strenght) +") " + name + " " + setArmor(armor)
 }
 
-func Generate(monsterType string, ID int) error {
+func Generate(number int, monsterType string, ID int) error {
 	/*
 	The generate func take the monster type and the ID and generate 
 	a monster, after the generationthe monster is add to the json to 
@@ -93,21 +96,26 @@ func Generate(monsterType string, ID int) error {
 	the function return error.
 	*/
 
-	monsters := groupMonster{}						// initilize an empty groupMonster struct, the groupMonster struct is in struct.go
+	for i := 0; i < number; i++ {
 
-	filepath := "../Data/monster.json"
+		monsters := groupMonster{}						// initilize an empty groupMonster struct, the groupMonster struct is in struct.go
 
-	monsters, err := PullMonsters(filepath)			// the PullMonster func is used to get the information in the json catalog
-	if err != nil {
-		return err
-	}
+		filepath := "../Data/monster.json"
+		
+		monsters, err := PullMonsters(filepath)			// the PullMonster func is used to get the information in the json catalog
+		if err != nil {
+			return err
+		}
 
-	creature := GenerateMonster(monsterType, ID)	// Generate a monster whith GenerateMonster
-	monsters.Monsters = append(monsters.Monsters, creature)
+		creature := GenerateMonster(monsterType, ID)
+		fmt.Println(creature)	// Generate a monster whith GenerateMonster
+		monsters.Monsters = append(monsters.Monsters, creature)
 
-	err = PushMonsters(filepath, monsters)			// the PushMonster func is used to add the new monster to the json catalog
-	if err != nil {
-		return err
+		err = PushMonsters(filepath, monsters)			// the PushMonster func is used to add the new monster to the json catalog
+		if err != nil {
+			return err
+		}
+
 	}
 	
 	return nil
