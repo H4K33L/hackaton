@@ -77,5 +77,5 @@ SRD, OGL or Creative Commons)
 
 # Actual contributor of the project :
  - Kelyan DANIS
- -
- -
+ - Ronan Dupas
+ - Louka Gennies
